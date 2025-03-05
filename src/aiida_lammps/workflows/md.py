@@ -105,7 +105,8 @@ class LammpsMDWorkChain(WorkChain):
                 "run_style": value["md"]["algo"].value,
                 "style": value["md"]["integrator"].value,
                 "constraints": value["md"]["integrator_constraints"].get_dict(),
-            }
+            },
+            "max_number_steps": value["md"]["steps"].value,
         }
         if "velocity" in value["md"]:
             parameters["md"].update({"velocity": value["md"]["velocity"].get_list()})
@@ -158,6 +159,7 @@ class LammpsMDWorkChain(WorkChain):
         md_params.integration.constraints = (
             self.inputs.md.integrator_constraints.get_dict()
         )
+        md_params.max_number_steps = self.inputs.md.steps.value
 
         if "velocity" in self.inputs.md:
             md_params.update({"velocity": self.inputs.md.velocity.get_list()})
