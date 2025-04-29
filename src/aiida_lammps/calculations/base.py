@@ -378,7 +378,7 @@ class LammpsBaseCalculation(CalcJob):
             potential=self.inputs.potential,
             structure=self.inputs.structure,
             parameters=_parameters,
-            potential_filename=self._POTENTIAL_FILENAME,
+            potential_filename=self.inputs.potential.filename,
             restart_filename=_restart_filename,
             trajectory_filename=_trajectory_filename,
             variables_filename=_variables_filename,
