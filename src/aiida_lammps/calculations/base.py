@@ -368,7 +368,7 @@ class LammpsBaseCalculation(CalcJob):
         # with folder.open(self._POTENTIAL_FILENAME, "w") as handle:
         #     handle.write(self.inputs.potential.get_content())
 
-        with folder.open(self._POTENTIAL_FILENAME, "wb") as handle1:
+        with folder.open(self.inputs.potential.filename, "wb") as handle1:
             with self.inputs.potential.open(mode="rb") as handle2:
                 handle1.write(handle2.read())
 
