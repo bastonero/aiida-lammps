@@ -601,7 +601,10 @@ def generate_integration_options(
         for _option in temperature_options:
             if _option in integration_parameters:
                 _value = integration_parameters.get(_option)
-                _value = [str(val) for val in _value]
+                if isinstance(_value, list):
+                    _value = [str(val) for val in _value]
+                else:
+                    _value = str(_value)
                 options += f' {_option} {" ".join(_value) if isinstance(_value, list) else _value} '
     # Set the options that depend on the pressure
     if style in pressure_dependent:
